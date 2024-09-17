@@ -15,3 +15,4 @@
 - タスクの完了、未完了が一目でわかる
 
 ## LICENSE
+[Apache 2.0](https://github.com/nekogakure/My-ToDo/blob/main/LICENSE)
