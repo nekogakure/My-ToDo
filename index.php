@@ -5,29 +5,11 @@ function h($v){
     return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-function sendLine($message, $taskContent)
-{
-	$line_api_url = 'https://notify-api.line.me/api/notify';
-	$line_token = 'LINE Notifyのトークン';
-
-	// メッセージにタスクの内容を追加
-	$data = http_build_query([ 'message' => $message . '：' . $taskContent . '（URL）'], '', '&');
-
-	$options = [
-		'http'=> [
-			'method'=>'POST',
-			'header'=>'Authorization: Bearer '.$line_token."\r\n"
-					. "Content-Type: application/x-www-form-urlencoded\r\n"
-					. 'Content-Length: ' . strlen($data)  . "\r\n",
-			'content' => $data,
-		]
-	];
-	$context = stream_context_create($options);
-	file_get_contents($line_api_url, false, $context);
-}
+include('./WEBHOOK/index.html');
 
 // 変数の準備
 $FILE = 'todo.txt'; // 保存ファイル名
+$ARCHIVE_FILE = 'archive.txt'; // アーカイブ用のファイル
 
 $id = uniqid(); // ユニークなIDを自動生成
 
@@ -56,9 +38,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         // 新規データ
         $DATA = [$id, $date, $text, false, []];
         $BOARD[] = $DATA;
+        // todo.txtに保存
         file_put_contents($FILE, json_encode($BOARD));
+        // archive.txtにも保存
+        $archiveData = $DATA; // 同じデータを使う
+        $archiveBoard = [];
+        if(file_exists($ARCHIVE_FILE)) {
+            $archiveBoard = json_decode(file_get_contents($ARCHIVE_FILE), true);
+        }
+        $archiveBoard[] = $archiveData;
+        file_put_contents($ARCHIVE_FILE, json_encode($archiveBoard));
         sendLine("新規タスクが追加されました。", $text); // タスクの内容も一緒に送信
     }
+
     
     if(isset($_POST['del'])){
         $NEWBOARD = [];
@@ -167,6 +159,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <input type="text" name="txt">
             <input type="submit" value="投稿">
         </form>    
+<p>過去のタスクは<a href="./archive.php">ココ</a>からみることができます。</p>
     </section>
     <section class="main">
 <!--        <table style="border-collapse: collapse">  -->
@@ -242,7 +235,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>やることがありません。遊ぶぞぉ！</p>
+            <p>タスクがありません</p>
         <?php endif; ?>
         </table>
     </section>
