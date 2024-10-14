@@ -5,7 +5,7 @@ function h($v){
     return htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 }
 
-include('./WEBHOOK/index.html');
+include('./WEBHOOK/index.php');
 
 // 変数の準備
 $FILE = 'todo.txt'; // 保存ファイル名
