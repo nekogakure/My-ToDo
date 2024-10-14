@@ -4,7 +4,7 @@
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
 
 ## 使い方
-** 重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません **
+**重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
 1. LINE公式アカウントを開設する（各自調べてください）
 2. LINE MessagengAPIを使用するためのプロパイダを作成する
 3. WEBHOOK URLに https://ドメイン/WEBHOOK/webhook.php を指定する。（SSLがないとエラー吐きます。また、ベーシック認証をかけている場合はWEBHOOKディレクトリのみをBasic認証から外してください。その際、./index.phpのincludeの部分も適時書き換えてください。）
