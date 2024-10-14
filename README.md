@@ -1,4 +1,7 @@
 # My ToDo
+
+**インストーラーは使用しないでください**
+
 これはねこがくれが作成した、簡単かつ軽量なToDoソフトです。簡易的ながらも、LINEと連携させることができ、通知を送信することもできます。
 
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
@@ -29,6 +32,7 @@
 ## 既知の不具合、虚弱性
 - 削除したタスクと違うタスクが削除された、と通知されることがある（実際は削除されていない）
 - コメント投稿時、時々ブラウザがクラッシュする
+- インストーラーが正常に作動しない
 
 ## LICENSE
 [Apache 2.0](https://github.com/nekogakure/My-ToDo/blob/main/LICENSE)
