@@ -1,7 +1,7 @@
 # My ToDo
 これはねこがくれが作成した、簡単かつ軽量なToDoソフトです。簡易的ながらも、LINEと連携させることができ、通知を送信することもできます。
 
-![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/Screenshot_20241014_165019_%20for%20docomo.jpg)
+![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
 
 ## 使い方
 ** 重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません **
