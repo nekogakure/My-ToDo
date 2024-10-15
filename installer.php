@@ -1,161 +1,92 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // GitHubリポジトリ情報
-    $owner = 'nekogakure';
-    $repo = 'My-ToDo';
-    $releasesUrl = "https://github.com/$owner/$repo/releases/latest";
+// GitHubリポジトリ情報
+$user = 'nekogakure';
+$repo = 'My-ToDo';
 
-    // インストール先のパス（このスクリプトがある階層）
-    $installTargetDir = __DIR__ . '/';
-    $arcTodoDir = $installTargetDir . 'arc_todo';
+// GitHub API URL for the latest release
+$apiUrl = "https://api.github.com/repos/$user/$repo/releases/latest";
 
-    // 最新リリースのページからリリース情報を取得
-    $options = [
-        'http' => [
-            'header' => 'User-Agent: PHP'
-        ]
-    ];
-    $context = stream_context_create($options);
-    $response = file_get_contents($releasesUrl, false, $context);
+// cURLを使ってAPIから最新リリース情報を取得
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_USERAGENT, 'PHP'); // User-Agentの設定が必要
+$response = curl_exec($ch);
+if ($response === false) {
+    die('最新バージョン情報の取得に失敗しました: ' . curl_error($ch));
+}
+curl_close($ch);
 
-    // リリースページからバージョンを抽出
-    preg_match('/\/' . $owner . '\/' . $repo . '\/releases\/tag\/v?([\d.]+)/', $response, $matches);
-    if (!isset($matches[1])) {
-        echo "最新バージョンの取得に失敗しました。\n";
-        exit;
-    }
-
-    $latestVersion = $matches[1];
-    echo "最新バージョン: " . htmlspecialchars($latestVersion) . "<br>";
-
-    // ZIPアーカイブのURLを組み立てる
-    $zipUrl = "https://github.com/$owner/$repo/archive/refs/tags/v$latestVersion.zip";
-    $zipFile = $installTargetDir . 'update.zip';
-
-    // ZIPファイルをダウンロード
-    $zipContent = file_get_contents($zipUrl);
-    if ($zipContent === false) {
-        echo "ZIPファイルのダウンロードに失敗しました。\n";
-        exit;
-    }
-    file_put_contents($zipFile, $zipContent);
-
-    // ZIPファイルを解凍
-    $zip = new ZipArchive;
-    if ($zip->open($zipFile) === TRUE) {
-        $extractPath = $installTargetDir . 'update';
-        $zip->extractTo($extractPath);
-        $zip->close();
-        echo "アップデートファイルを解凍しました。\n";
-    } else {
-        echo "ZIPファイルの解凍に失敗しました。\n";
-        exit;
-    }
-
-    // arc_todoディレクトリを作成
-    if (!file_exists($arcTodoDir)) {
-        mkdir($arcTodoDir, 0777, true);
-    }
-
-    // アップデートするファイルを除外するリスト
-    $excludedFiles = ['todo.txt', 'archive.txt', '.htaccess', '.user.ini'];
-
-    // 解凍したディレクトリの中身をarc_todoに移動し、新しいファイルをコピー
-    $extractedDir = glob($extractPath . '/*', GLOB_ONLYDIR)[0];
-    moveAndReplaceFiles($extractedDir, $installTargetDir, $arcTodoDir, $excludedFiles);
-
-    // バージョン情報をconfig.jsonに更新
-    $configFile = $installTargetDir . 'config.json';
-    $config = [
-        'version' => $latestVersion,
-    ];
-    file_put_contents($configFile, json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    echo "config.jsonを更新しました。\n";
-
-    // 一時ファイルの削除
-    if (file_exists($zipFile)) {
-        unlink($zipFile);
-    }
-    deleteDirectory($extractPath);
-    
-    // インストーラーを無効にするために内容を消去
-    file_put_contents(__FILE__, '');
-    
-    // Updater/index.phpにリダイレクト
-    header('Location: ./Updater/index.php');
-    exit();
+// 最新リリース情報をデコード
+$releaseData = json_decode($response, true);
+if (!isset($releaseData['zipball_url'])) {
+    die('最新バージョンの取得に失敗しました。');
 }
 
-?>
+// ZIPファイルのURL
+$zipUrl = $releaseData['zipball_url'];
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Install.css">
-    <title>MyToDo Installer</title>
-</head>
-<body>
-    <div class="installer-container">
-        <h1>MyToDo インストーラー</h1>
-        <p>このプログラムをインストールする準備が整いました。以下のボタンを押してインストールを開始してください。</p>
-        <form method="POST">
-            <button type="submit" class="install-button">インストールする</button>
-        </form>
-    </div>
-</body>
-</html>
+// ダウンロード先のパス
+$zipFile = __DIR__ . '/My-ToDo-latest.zip';
 
-<?php
-/**
- * ディレクトリを再帰的に移動し、ファイルを置き換える関数
- */
-function moveAndReplaceFiles($source, $destination, $backupDir, $excludedFiles) {
-    $dir = opendir($source);
-    @mkdir($destination);
+// 解凍先の一時ディレクトリ
+$tempExtractPath = __DIR__ . '/My-ToDo-temp';
 
-    while (($file = readdir($dir)) !== false) {
-        if (($file != '.') && ($file != '..')) {
-            $sourcePath = $source . '/' . $file;
-            $destPath = $destination . '/' . $file;
-            $backupPath = $backupDir . '/' . $file;
+// ZIPファイルをcURLでダウンロード
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $zipUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // リダイレクトを許可
+curl_setopt($ch, CURLOPT_USERAGENT, 'PHP'); // 再度User-Agentを設定
+$fileData = curl_exec($ch);
+if ($fileData === false) {
+    die('ZIPファイルのダウンロードに失敗しました: ' . curl_error($ch));
+}
+curl_close($ch);
 
-            // 除外リストに含まれているファイルはスキップ
-            if (in_array($file, $excludedFiles)) {
-                continue;
-            }
-
-            // 既存のファイルをarc_todoに移動
-            if (file_exists($destPath)) {
-                rename($destPath, $backupPath);
-            }
-
-            if (is_dir($sourcePath)) {
-                moveAndReplaceFiles($sourcePath, $destPath, $backupDir . '/' . $file, $excludedFiles);
-            } else {
-                copy($sourcePath, $destPath);
-            }
-        }
-    }
-    closedir($dir);
+// ダウンロードしたデータをZIPファイルに保存
+if (file_put_contents($zipFile, $fileData) === false) {
+    die('ZIPファイルの保存に失敗しました。');
 }
 
-/**
- * ディレクトリを再帰的に削除する関数
- */
+// ZIPファイルを解凍
+$zip = new ZipArchive;
+if ($zip->open($zipFile) === TRUE) {
+    $zip->extractTo($tempExtractPath);
+    $zip->close();
+    echo 'ZIPファイルの解凍に成功しました。';
+} else {
+    die('ZIPファイルの解凍に失敗しました。');
+}
+
+// 解凍後のディレクトリを取得（通常は1つだけのディレクトリが生成される）
+$extractedDir = glob($tempExtractPath . '/*', GLOB_ONLYDIR)[0] ?? null;
+if (!$extractedDir || !is_dir($extractedDir)) {
+    die('解凍されたディレクトリが見つかりませんでした。');
+}
+
+// 解凍されたファイルを現在のディレクトリに移動
+foreach (scandir($extractedDir) as $file) {
+    if ($file === '.' || $file === '..') {
+        continue;
+    }
+    rename($extractedDir . '/' . $file, __DIR__ . '/' . $file);
+}
+
+// 一時ディレクトリを削除
 function deleteDirectory($dir) {
-    if (!is_dir($dir)) {
-        return;
-    }
-    $files = array_diff(scandir($dir), ['.', '..']);
-    foreach ($files as $file) {
-        $filePath = "$dir/$file";
-        if (is_dir($filePath)) {
-            deleteDirectory($filePath);
-        } else {
-            unlink($filePath);
-        }
+    if (!is_dir($dir)) return;
+    foreach (scandir($dir) as $file) {
+        if ($file === '.' || $file === '..') continue;
+        $filePath = $dir . '/' . $file;
+        is_dir($filePath) ? deleteDirectory($filePath) : unlink($filePath);
     }
     rmdir($dir);
 }
+
+deleteDirectory($tempExtractPath);
+
+// ZIPファイルを削除（不要な場合）
+unlink($zipFile);
+
+echo 'ファイルの移動とクリーンアップが完了しました。正常にインストールが完了しました。';
