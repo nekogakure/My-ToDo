@@ -1,8 +1,13 @@
 # My ToDo
-
 これはねこがくれが作成した、簡単かつ軽量なToDoソフトです。簡易的ながらも、LINEと連携させることができ、通知を送信することもできます。
 
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
+
+## インストール
+[インストーラー](https://github.com/nekogakure/My-ToDo/releases/tag/Installer)をインストールしたいサーバーのディレクトリで実行します。
+
+>./todoディレクトリに設置した場合、https://example.com/todo/installer.php にアクセス
+これだけで、インストールを自動で行ってくれます。
 
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
@@ -30,7 +35,6 @@
 ## 既知の不具合、虚弱性
 - 削除したタスクと違うタスクが削除された、と通知されることがある（実際は削除されていない）
 - コメント投稿時、時々ブラウザがクラッシュする
-- インストーラーが正常に作動しない
 
 ## LICENSE
 [Apache 2.0](https://github.com/nekogakure/My-ToDo/blob/main/LICENSE)
