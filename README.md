@@ -1,7 +1,5 @@
 # My ToDo
 
-**インストーラーは使用しないでください**
-
 これはねこがくれが作成した、簡単かつ軽量なToDoソフトです。簡易的ながらも、LINEと連携させることができ、通知を送信することもできます。
 
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
