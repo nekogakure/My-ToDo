@@ -3,6 +3,12 @@
 
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
 
+## インストール
+[インストーラー](https://github.com/nekogakure/My-ToDo/releases/tag/Installer)をインストールしたいサーバーのディレクトリで実行します。
+
+>./todoディレクトリに設置した場合、https://example.com/todo/installer.php にアクセス
+これだけで、インストールを自動で行ってくれます。
+
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
 1. LINE公式アカウントを開設する（各自調べてください）
