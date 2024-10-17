@@ -1,5 +1,13 @@
 <?php
-// 削除対象のファイルを定義
+session_start();
+
+// ログインしていない場合、login.php にリダイレクト
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+
+// 削除対象から除外のファイルを定義
 $excludedFiles = [
     'todo.txt',
     'archive.txt',
