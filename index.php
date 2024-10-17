@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// ログインしていない場合、login.php にリダイレクト
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: login.php');
+    exit;
+}
 
 // HTMLタグの入力を無効にし、文字コードをutf-8にする
 function h($v){
