@@ -14,22 +14,22 @@
 
 ### 拡張機能をインストールする
 1. cURLをインストールします
-   '''
+   ```
    $ sudo apt-get install php-curl
-   '''
+   ```
 
 2. ZipArchiveをインストールします
-   '''
+   ```
    $ sudo apt-get install php-zip
-   '''
+   ```
 
 3. php.iniの確認をします
       - extension=zip
       - extension=curl
 が存在するか、もしくはコメントアウトされていないか確認してください。その後、
-   '''
+   ```
    $sudo systemctl restart apache2
-   '''
+   ```
 でApacheを再起動してください
 
 
