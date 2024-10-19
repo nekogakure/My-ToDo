@@ -11,6 +11,29 @@
 
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
+
+### 拡張機能をインストールする
+1. cURLをインストールします
+   '''
+   $ sudo apt-get install php-curl
+   '''
+
+2. ZipArchiveをインストールします
+   '''
+   $ sudo apt-get install php-zip
+   '''
+
+3. php.iniの確認をします
+      - extension=zip
+      - extension=curl
+が存在するか、もしくはコメントアウトされていないか確認してください。その後、
+   '''
+   $sudo systemctl restart apache2
+   '''
+でApacheを再起動してください
+
+
+### インストールできた場合
 1. LINE公式アカウントを開設する（各自調べてください）
 2. LINE MessagengAPIを使用するためのプロパイダを作成する
 3. WEBHOOK URLに https://ドメイン/WEBHOOK/webhook.php を指定する。（SSLがないとエラー吐きます。また、ベーシック認証をかけている場合はWEBHOOKディレクトリのみをBasic認証から外してください。その際、./index.phpのincludeの部分も適時書き換えてください。）
