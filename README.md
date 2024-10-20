@@ -12,18 +12,29 @@
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
 
+### 対応OSおよびレンタルサーバー
+- Ubuntu
+- Debian
+- RasberryPi OS
+- ShinCloudfree
+- Xserver
+
 ### 拡張機能をインストールする
-1. cURLをインストールします
+1. PHPのモジュールをインストールします
+   ```
+   $ sudo apt install -y libapache2-mod-php
+   ```
+2. cURLをインストールします
    ```
    $ sudo apt-get install php-curl
    ```
 
-2. ZipArchiveをインストールします
+3. ZipArchiveをインストールします
    ```
    $ sudo apt-get install php-zip
    ```
 
-3. php.iniの確認をします
+4. php.iniの確認をします
       - extension=zip
       - extension=curl
 が存在するか、もしくはコメントアウトされていないか確認してください。その後、
