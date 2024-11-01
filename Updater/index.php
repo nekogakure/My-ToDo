@@ -28,7 +28,12 @@ $options = [
     ]
 ];
 $context = stream_context_create($options);
-$response = file_get_contents($releasesUrl, false, $context);
+$response = @file_get_contents($releasesUrl, false, $context);
+
+if ($response === false) {
+    echo "リリースページの取得に失敗しました。\n";
+    exit;
+}
 
 // リリースページからバージョンを抽出
 preg_match('/\/' . $owner . '\/' . $repo . '\/releases\/tag\/v?([\d.]+)/', $response, $matches);
@@ -47,7 +52,7 @@ if (version_compare($latestVersion, $currentVersion, '>')) {
     $zipFile = __DIR__ . '/update.zip';
 
     // ZIPファイルをダウンロード
-    $zipContent = file_get_contents($zipUrl);
+    $zipContent = @file_get_contents($zipUrl);
     if ($zipContent === false) {
         echo "ZIPファイルのダウンロードに失敗しました。\n";
         exit;
@@ -66,6 +71,12 @@ if (version_compare($latestVersion, $currentVersion, '>')) {
         exit;
     }
 
+    // 解凍したディレクトリの確認
+    if (!is_dir($extractPath)) {
+        echo "解凍先のディレクトリが存在しません。\n";
+        exit;
+    }
+
     // 更新先のディレクトリを設定（`updater`の一つ上のディレクトリ）
     $updateTargetDir = realpath(__DIR__ . '/..');
     $arcTodoDir = $updateTargetDir . '/arc_todo';
@@ -79,8 +90,12 @@ if (version_compare($latestVersion, $currentVersion, '>')) {
     $excludedFiles = ['todo.txt', 'archive.txt', '.htaccess', '.user.ini'];
 
     // 解凍したディレクトリの中身をarc_todoに移動し、新しいファイルをコピー
-    $extractedDir = glob($extractPath . '/*', GLOB_ONLYDIR)[0];
-    moveAndReplaceFiles($extractedDir, $updateTargetDir, $arcTodoDir, $excludedFiles);
+    $extractedDir = glob($extractPath . '/*', GLOB_ONLYDIR);
+    if (empty($extractedDir)) {
+        echo "解凍したディレクトリが見つかりません。\n";
+        exit;
+    }
+    moveAndReplaceFiles($extractedDir[0], $updateTargetDir, $arcTodoDir, $excludedFiles);
 
     // バージョン情報をconfig.jsonに更新
     $config['version'] = $latestVersion;
@@ -117,13 +132,17 @@ function moveAndReplaceFiles($source, $destination, $backupDir, $excludedFiles) 
 
             // 既存のファイルをarc_todoに移動
             if (file_exists($destPath)) {
-                rename($destPath, $backupPath);
+                if (!rename($destPath, $backupPath)) {
+                    echo "ファイルの移動に失敗しました: $destPath\n";
+                }
             }
 
             if (is_dir($sourcePath)) {
                 moveAndReplaceFiles($sourcePath, $destPath, $backupDir . '/' . $file, $excludedFiles);
             } else {
-                copy($sourcePath, $destPath);
+                if (!copy($sourcePath, $destPath)) {
+                    echo "ファイルのコピーに失敗しました: $sourcePath\n";
+                }
             }
         }
     }
