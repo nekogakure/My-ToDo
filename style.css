@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    margin: 0;
+    margin: auto;
     padding: 0;
 }
 
@@ -53,6 +53,10 @@ tr {
 td {
     padding: 10px;
     border: none; /* テーブルのボーダーを無くす */
+}
+
+.tag {
+    color:#7d7d7d;
 }
 
 span {
