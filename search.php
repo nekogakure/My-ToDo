@@ -49,8 +49,18 @@ if ($query !== '') {
 </head>
 <body>
 <div style="text-align: center; margin: auto;">
-    <h1>検索結果</h1>
-    <p>検索クエリ: <?php echo h($query); ?></p>
+    <h1>My ToDo</h1>
+
+    <section class="main">
+    <h3>検索</h3>
+    <form method="get" action="search.php">
+        <input type="text" name="q" placeholder="タスクを検索...">
+        <input type="submit" value="検索">
+    </form>
+    </section>
+
+<section class="main">
+    <h2>検索結果</h2>
     <table style="border-collapse: collapse">
 
         <?php if (count($results) > 0): ?>
@@ -69,5 +79,6 @@ if ($query !== '') {
     </table>
     <a href="index.php">戻る</a>
 </div>
+ </section>
 </body>
 </html>
