@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </head>
         <body>
             <h1>アンインストールが完了しました！</h1>
-            <p>すべてのデータが削除されました。</p>
+            <p>すべてのデータが削除されました。（todo.txtとarchive.txtは残ります）</p>
             <a href='./'>戻る</a>
         </body>
         </html>";
