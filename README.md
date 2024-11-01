@@ -76,5 +76,6 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 - 削除したタスクと違うタスクが削除された、と通知されることがある（実際は削除されていない）：未修正
 - コメント投稿時、時々ブラウザがクラッシュする：***修正済***
 - タスクを削除時、todo.txt（タスク保存ファイル）では反映されているが、見かけ反映されない：未修正
+- アップデートした際、チャネルトークンとグループIDが削除される：未修正
 ## LICENSE
 [Apache 2.0](https://github.com/nekogakure/My-ToDo/blob/main/LICENSE)
