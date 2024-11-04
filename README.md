@@ -6,10 +6,14 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 ![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
 
 ## インストール
+### インストーラーを使用する場合
 [インストーラー](https://github.com/nekogakure/My-ToDo/releases/tag/Installer)をインストールしたいサーバーのディレクトリで実行します。
 
 >./todoディレクトリに設置した場合、https://example.com/todo/installer.php にアクセス
 これだけで、インストールを自動で行ってくれます。
+
+### それ以外の方法
+
 
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
@@ -48,7 +52,7 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 
 ### インストールできた場合
 1. LINE公式アカウントを開設する（各自調べてください）
-2. LINE MessagengAPIを使用するためのプロパイダを作成する
+2. LINE Messaging APIを使用するためのプロパイダを作成する
 3. WEBHOOK URLに https://ドメイン/WEBHOOK/webhook.php を指定する。（SSLがないとエラー吐きます。また、ベーシック認証をかけている場合はWEBHOOKディレクトリのみをBasic認証から外してください。その際、./index.phpのincludeの部分も適時書き換えてください。）
 4. 通知を送信したいグループに先ほど作った公式アカウントを追加する（設定の「トークルームへの参加を許可する」をオンにしてください」
 5. 適当に、「あああ」などとグループにメッセージを送る。
