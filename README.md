@@ -26,10 +26,10 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 - Ubuntu
 - Debian
 - RasberryPi OS
-- ShinCloudfree
+- Cloudfree
 - Xserver
 
-### 拡張機能をインストールする（Apache）
+### 拡張機能をインストールする（Apache2）
 1. PHPのモジュールをインストールします
    ```
    $ sudo apt install -y libapache2-mod-php
