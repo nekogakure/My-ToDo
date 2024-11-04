@@ -92,5 +92,10 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 - タスクを削除時、todo.txt（タスク保存ファイル）では反映されているが、見かけ反映されない：未修正
 - アップデートした際、チャネルトークンとグループIDが削除される：未修正
 - 一つだけしかアカウントを作れない：未修正
+
+## 今後実装する予定の機能
+- LINEアカウント、Googleアカウントでログイン
+- アカウントとtodoの紐づけ
+
 ## LICENSE
 [Apache 2.0](https://github.com/nekogakure/My-ToDo/blob/main/LICENSE)
