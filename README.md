@@ -13,7 +13,11 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 これだけで、インストールを自動で行ってくれます。
 
 ### それ以外の方法
-
+```
+cd <サーバーのディレクトリ>
+$git clone https://github.com/nekogakure/My-ToDo.git todo
+```
+を実行して、ダウンロードします
 
 ## 使い方
 **重要：LINE Notifyのサービス廃止に基づき、version1.2.0からLINE Notifyは使用できなくなりました。そのため、過去のバージョンは2025年頃までしか使えません**
