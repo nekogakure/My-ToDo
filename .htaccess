@@ -1,0 +1,3 @@
+<FilesMatch "^(todo\.txt|archive\.txt|user\.json)$">
+    Require all denied
+</FilesMatch>
