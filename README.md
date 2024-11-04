@@ -8,6 +8,7 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 ## インストール
 ### インストーラーを使用する場合
 [インストーラー](https://github.com/nekogakure/My-ToDo/releases/tag/Installer)をインストールしたいサーバーのディレクトリで実行します。
+> Apacheの場合、ドキュメントルートの/var/www/htmlです
 
 >./todoディレクトリに設置した場合、https://example.com/todo/installer.php にアクセス
 これだけで、インストールを自動で行ってくれます。
@@ -29,7 +30,7 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 - Cloudfree
 - Xserver
 
-### 拡張機能をインストールする（Apache2）
+### セットアップ（Apache2）
 1. PHPのモジュールをインストールします
    ```
    $ sudo apt install -y libapache2-mod-php
@@ -51,22 +52,27 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
    ```
    $ sudo systemctl restart apache2
    ```
-でApacheを再起動してください
+でApacheを再起動してください。そして、
 
+5. LINE公式アカウントを開設する（各自調べてください）
 
-### インストールできた場合
-1. LINE公式アカウントを開設する（各自調べてください）
-2. LINE Messaging APIを使用するためのプロパイダを作成する
-3. WEBHOOK URLに https://ドメイン/WEBHOOK/webhook.php を指定する。（SSLがないとエラー吐きます。また、ベーシック認証をかけている場合はWEBHOOKディレクトリのみをBasic認証から外してください。その際、./index.phpのincludeの部分も適時書き換えてください。）
-4. 通知を送信したいグループに先ほど作った公式アカウントを追加する（設定の「トークルームへの参加を許可する」をオンにしてください」
-5. 適当に、「あああ」などとグループにメッセージを送る。
-6. ./WEBHOOKにid.txtが生成されるのでコピペする
-7. ./WEBHOOK/index.phpのYOUR_GROUP_IDを先程のグループIDに書き換える
-8. MessagengAPIのトークンを生成する（ついでにWEBHOOK URLをhttps://ドメイン/WEBHOOK/index.php に書き換えておく（データ圧迫防止）
-9. ./index.phpのYOUR_TOKENを先程のトークンに変える。
-10. サイトにアクセスしてタスクを追加すると、 「タスクが追加されました：タスクの名前 （URL）」と送られてくるはずです。
+6. LINE Messaging APIを使用するためのプロパイダを作成する
 
-たったこれだけで、だれでもToDoアプリを使用することができます。また、これだと誰でもアクセスできてしまうのでBasic認証をかけることで擬似的にアカウントを作れます。
+7. WEBHOOK URLに https://ドメイン/WEBHOOK/webhook.php を指定する。（SSLがないとエラー吐きます。また、ベーシック認証をかけている場合はWEBHOOKディレクトリのみをBasic認証から外してください。その際、./index.phpのincludeの部分も適時書き換えてください。）
+
+8. 通知を送信したいグループに先ほど作った公式アカウントを追加する（設定の「トークルームへの参加を許可する」をオンにしてください」
+
+9. 適当に、「あああ」などとグループにメッセージを送る。
+
+10. ./WEBHOOKにid.txtが生成されるのでコピペする
+    
+11. ./WEBHOOK/index.phpのYOUR_GROUP_IDを先程のグループIDに書き換える
+    
+12. MessagengAPIのトークンを生成する（ついでにWEBHOOK URLをhttps://ドメイン/WEBHOOK/index.php に書き換えておく（データ圧迫防止）
+13. ./index.phpのYOUR_TOKENを先程のトークンに変える。
+    
+14. サイトにアクセスしてタスクを追加すると、 「タスクが追加されました：タスクの名前 （URL）」と送られてくるはずです。
+
 わからないことがある場合、気軽にissuesで聞いてください。できる限りサポートします。「必ず」ではありません（私も中学生なので）
 
 ## 機能
