@@ -3,7 +3,7 @@
 
 FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)です。
 
-![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.png)
+![イメージ画像](https://github.com/nekogakure/My-ToDo/blob/main/src/image.jpg)
 
 ## インストール
 ### インストーラーを使用する場合
