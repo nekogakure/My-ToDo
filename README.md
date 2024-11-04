@@ -14,7 +14,7 @@ FAQ:[こちら](https://github.com/nekogakure/My-ToDo/blob/main/src/FAQ.md)で�
 
 ### それ以外の方法
 ```
-cd <サーバーのディレクトリ>
+$cd <サーバーのディレクトリ>
 $git clone https://github.com/nekogakure/My-ToDo.git todo
 ```
 を実行して、ダウンロードします
