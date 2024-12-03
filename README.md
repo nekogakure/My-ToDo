@@ -59,6 +59,9 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 
 3. 送信
 
+#### mainのアップデート
+mainディレクトリをアップデートしたら、config.jsonのバージョンを書き換えてください。自動で全体をアップデートしてくれます
+
 ### LINEへの通知機能を持たせる場合
 1. 通知機能を持たせたいアカウントと紐づけているディレクトリの/WEBHOOKディレクトリのindex.phpのコメントアウトを外す
 
