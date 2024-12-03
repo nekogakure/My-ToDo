@@ -50,7 +50,7 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 
 7. admin.phpの4~7行目のコメントアウトをはずし、管理者のユーザー名のところを書き換える
 
-8. 各ファイルのtodoのURLのところを随時書き換える
+8. 各ファイルのtodoのURLのところを随時書き換える（特に/mainのindex.php, archive.phpは書き換えないと動きません）
 
 #### ユーザー登録をする方法
 1. admin.phpに管理者アカウントでログインしてアクセス
