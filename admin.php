@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // JSONファイルに書き込み
     file_put_contents($jsonFile, json_encode($jsonData, JSON_PRETTY_PRINT));
 
-    echo "ユーザー $userName が登録され、ディレクトリ $newDir が作成され、./main の内容がコピーされました。";
+    echo "ユーザー $username が登録され、ディレクトリ $newDir が作成され、./main の内容がコピーされました。";
 }
 
 // ディレクトリを再帰的にコピーする関数
