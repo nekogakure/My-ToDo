@@ -113,10 +113,10 @@ if (file_exists($config_file)) {
     <section id="menu">
         <section class="close-btn" onclick="toggleMenu()">×</section>
         <ul>
-            <li><a href="https://mytodo.f5.si/seikyo/">Home</a></li>
+            <li><a href="todoのうRL">Home</a></li>
             <li><a href="https://github.com/nekogakure/My-ToDo/blob/main/README.md">About</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdXjcNaBR200vG-NCnUanc6vlOGOrvbGLAlICrkgAroyHpGQA/viewform">Contact</a></li>
-            <li><a href="https://mytodo.f5.si/seikyo/logout.php">Logout</a></li>
+            <li><a href="todoのURL/logout.php">Logout</a></li>
         </ul>
         <p style="color: #c0c0c0">……………………</p>
         <img src="https://mytodo.f5.si/apple-touch-icon-120x120.png" alt="My ToDo icon" />
