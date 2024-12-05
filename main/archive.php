@@ -3,7 +3,7 @@ session_start();
 
 // ユザネがセッションにセットされていない場合、ログイン画面にリダイレクト
 if (!isset($_SESSION['username'])) {
-    header("Location: ../login.php");
+    header("Location: ../../index.php");
     exit();
 }
 
