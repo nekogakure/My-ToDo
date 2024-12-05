@@ -50,8 +50,6 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 
 7. admin.phpの4~7行目のコメントアウトをはずし、管理者のユーザー名のところを書き換える
 
-8. 各ファイルのtodoのURLのところを随時書き換える（特に/mainのindex.php, archive.phpは書き換えないと動きません）
-
 #### ユーザー登録をする方法
 1. admin.phpに管理者アカウントでログインしてアクセス
 
@@ -59,8 +57,8 @@ $git clone https://github.com/nekogakure/My-ToDo.git todo
 
 3. 送信
 
-#### mainのアップデート
-mainディレクトリをアップデートしたら、config.jsonのバージョンを書き換えてください。自動で全体をアップデートしてくれます
+#### ソースコードのアップデート
+mainディレクトリをアップデートしたら、自動で全体をアップデートしてくれます
 
 ### LINEへの通知機能を持たせる場合
 1. 通知機能を持たせたいアカウントと紐づけているディレクトリの/WEBHOOKディレクトリのindex.phpのコメントアウトを外す
@@ -94,7 +92,6 @@ mainディレクトリをアップデートしたら、config.jsonのバージ�
 - タスクの削除
 - タスクにコメントをつける
 - タスクの完了、未完了が一目でわかる
-- タスクを削除してもarchive.phpでは全てのデータが残っている
 - LINE MessagingAPIを使用してLINEに通知を送信する
 - アカウント登録、ログイン
 - タスクにタグを追加する
