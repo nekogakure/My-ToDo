@@ -1,4 +1,5 @@
 <?php
+include('header.php')
 // セッションを開始
 session_start();
 
@@ -18,5 +19,5 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // 指定されたURLにリダイレクト
-header("Location: todoのURL");
+header("Location: "GetPageURL());
 exit();
