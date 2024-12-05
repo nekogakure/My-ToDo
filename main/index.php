@@ -24,7 +24,7 @@ if (!isset($_SESSION['username'])) {
 $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 // 指定された部分を取り除く
-$base_url = "todoのURL";
+$base_url = GetPageURL() . "/";
 $access_dir = str_replace($base_url, "", $current_url);
 
 // $ACCESS_DIR に格納
