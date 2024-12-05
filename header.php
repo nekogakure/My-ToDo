@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); // セッションが開始されていない場合に開始
 }
 
-// セッションからユザネを取得し、ユーザー名を設定
-$username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : '<a href="todoのURL" style="text-decoration: none; color: #fff">Login</a>';
+// セッションからSIDを取得し、ユーザー名を設定
+$username = isset($_SESSION['SID']) ? htmlspecialchars($_SESSION['SID']) : '<a href="https://mytodo.f5.si/seikyo" style="text-decoration: none; color: #fff">Login</a>';
 
 // config.json ファイルのパス
 $config_file = './config.json';
@@ -26,6 +26,19 @@ if (file_exists($config_file)) {
 } else {
   //  echo "config.jsonファイルが存在しません。";
 }
+
+function GetPageURL() {
+    // サーバー名（ホスト名）を取得
+    $host = $_SERVER['HTTP_HOST'];
+    
+    // HTTPSかどうかを確認
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    
+    // URLを構築して返す
+    return $protocol . '://' . $host;
+}
+//echo GetPageURL();
+$HOSTNAME = GetPageURL();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -113,10 +126,10 @@ if (file_exists($config_file)) {
     <section id="menu">
         <section class="close-btn" onclick="toggleMenu()">×</section>
         <ul>
-            <li><a href="todoのうRL">Home</a></li>
+            <li><a href="<?php echo $HOSTNAME; ?>/seikyo/">Home</a></li>
             <li><a href="https://github.com/nekogakure/My-ToDo/blob/main/README.md">About</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdXjcNaBR200vG-NCnUanc6vlOGOrvbGLAlICrkgAroyHpGQA/viewform">Contact</a></li>
-            <li><a href="todoのURL/logout.php">Logout</a></li>
+            <li><a href="<?php echo $HOSTNAME; ?>/seikyo/logout.php">Logout</a></li>
         </ul>
         <p style="color: #c0c0c0">……………………</p>
         <img src="https://mytodo.f5.si/apple-touch-icon-120x120.png" alt="My ToDo icon" />
