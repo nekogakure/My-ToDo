@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(0);
 if (session_status() === PHP_SESSION_NONE) {
     session_start(); // セッションが開始されていない場合に開始
 }
