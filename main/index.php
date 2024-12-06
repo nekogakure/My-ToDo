@@ -1,6 +1,9 @@
 <?php
-session_start();
+include('../../header.php');
+?>
 
+
+<?php
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
@@ -162,11 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-
-<?php
-include('../../header.php');
-?>
-
 
 <!DOCTYPE html>
 <html lang="ja">
