@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// ログインしていない場合、login.php にリダイレクト
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php');
-    exit;
+// ユザネがセッションにセットされていない場合、ログイン画面にリダイレクト
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../index.php");
+    exit();
 }
 
 // HTMLタグの入力を無効にし、文字コードをutf-8にする関数

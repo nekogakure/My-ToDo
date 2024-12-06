@@ -1,11 +1,15 @@
 <?php
+include('../../header.php');
+?>
+
+<?php
 session_start();
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
 // ログインしていない場合、login.php にリダイレクト
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: login.php');
+if (!isset($_SESSION['username'])) {
+    header('Location: ../../index.php');
     exit;
 }
 
@@ -77,7 +81,6 @@ if ($query !== '') {
             </tr>
         <?php endif; ?>
     </table>
-    <a href="index.php">戻る</a>
 </div>
  </section>
 </body>

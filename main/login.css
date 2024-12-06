@@ -1,5 +1,5 @@
 /* 全体のスタイル設定 */
-.main {
+body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; /* 少し明るい背景 */
     color: #333;
@@ -27,7 +27,6 @@ h1 {
     color: #4CAF50; /* テーマカラー */
     margin-bottom: 20px;
     font-size: 24px;
-    text-align: center;
 }
 
 /* フォームのスタイル */
@@ -43,7 +42,7 @@ input[type="text"], input[type="password"] {
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: calc(100%);
+    width: calc(100% - 22px); /* paddingの分を差し引く */
     box-sizing: border-box;
 }
 
@@ -59,7 +58,7 @@ button, input[type="submit"] {
     transition: background-color 0.3s;
 }
 
-div{
+div {
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -77,7 +76,6 @@ button:hover, input[type="submit"]:hover {
     color: red;
     font-size: 14px;
     margin-top: 10px;
-      text-align: center;
 }
 
 /* レスポンシブ対応 */

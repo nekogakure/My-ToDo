@@ -2,7 +2,7 @@
 
 function sendLine($message, $taskContent)
 {
-    $line_api_url = 'https://api.line.me/v2/bot/message/push';
+/*    $line_api_url = 'https://api.line.me/v2/bot/message/push';
     $line_token = 'YOUR_ACCESS_TOKEN'; // LINEのチャネルアクセストークンを設定
 
     // グループIDを読み込む
@@ -41,5 +41,5 @@ function sendLine($message, $taskContent)
     }
 
     // cURLの終了
-    curl_close($ch);
+    curl_close($ch);*/
 }
