@@ -121,6 +121,8 @@ $HOSTNAME = GetPageURL();
         <section class="menu-icon" onclick="toggleMenu()">☰</section>
         <section class="title">My ToDo</section>
         <section class="user-name"><?php echo $username; ?></section>
+        <link rel="icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="icon512.png">
     </header>
 
     <section id="menu">
