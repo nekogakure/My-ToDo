@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(0);
 function version_check($user_dir) {
     // パスの設定
     $main_config_path = '../../main/config.json';

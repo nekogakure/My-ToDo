@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(0);
 session_start();
 
 // 管理者専用アクセス制御

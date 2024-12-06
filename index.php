@@ -1,6 +1,7 @@
 <?php
+ini_set('display_errors', 0);
+error_reporting(0);
 session_start();
-
 // セッションに 'dir' が設定されているか確認
 if (isset($_SESSION['dir'])) {
     // セッションの 'dir' を取得
