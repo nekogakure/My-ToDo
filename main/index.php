@@ -1,8 +1,4 @@
 <?php
-include('../../header.php');
-?>
-
-<?php
 session_start();
 
 header("Cache-Control: no-cache, must-revalidate");
@@ -166,6 +162,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+
+<?php
+include('../../header.php');
+?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
