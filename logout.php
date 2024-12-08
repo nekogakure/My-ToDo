@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 0);
-error_reporting(0);
-include('header.php')
+//ini_set('display_errors', 0);
+//error_reporting(0);
+include('header.php');
 // セッションを開始
 session_start();
 
@@ -20,6 +20,6 @@ if (ini_get("session.use_cookies")) {
 // セッションを完全に破棄
 session_destroy();
 
-// 指定されたURLにリダイレクト
-header("Location: "GetPageURL());
+$URL = GetPageURL();
+header("Location: $URL");
 exit();
