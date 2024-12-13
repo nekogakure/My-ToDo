@@ -136,7 +136,7 @@ $HOSTNAME = GetPageURL();
             <li><a href="<?php echo $HOSTNAME; ?>/logout.php">Logout</a></li>
         </ul>
         <p style="color: #c0c0c0">……………………</p>
-        <img src="https://mytodo.f5.si/icon512.png" alt="My ToDo icon" />
+        <img src="https://mytodo.f5.si/icon192.png" alt="My ToDo icon" />
         <p style="font-size: x-small; color: #c0c0c0;">MyToDo ver.<?php echo $version ?></p>
         <small>© 2024 nekogakure.</small>
     </section>
