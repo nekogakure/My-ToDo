@@ -44,7 +44,6 @@ try {
 
 if(!($_SESSION['dir'] . '/' == $ACCESS_DIR)) {
     die("アクセス権がありません");
-    exit();
 }
 
 // HTMLタグの入力を無効にし、文字コードをutf-8にする
