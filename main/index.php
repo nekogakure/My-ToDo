@@ -86,7 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 新規データ
         $DATA = [$id, $date, $text, false, [], $tag]; // タグを含める
         $BOARD[] = $DATA;
-        // todo.txtに保存
         file_put_contents($FILE, json_encode($BOARD));
         // archive.txtにも保存
         $archiveData = $DATA; // 同じデータを使う
