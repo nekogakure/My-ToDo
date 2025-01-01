@@ -12,6 +12,7 @@ currently being supported with security updates.
 | 1.2.x   |    not supported   |
 | 1.3.x   |      supported     |
 | 1.4.0   |      supported     |
+| 1.4.1   |      supported     |
 
 ## Report a vulnerability
 Please use issues 
