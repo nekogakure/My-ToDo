@@ -1,14 +1,10 @@
 <?php
 session_start();
-
-// 管理者専用アクセス制御
-if ($_SESSION['userName'] != 's24087') {
-    die('アクセス権限がありません');
-}
+include('log.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // ユーザー情報を登録
-    $useruserName = $_POST['userName'];  // 学生ID (userName)
+    $userName = $_POST['userName'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // パスワードをハッシュ化
     $dirName = $_POST['directory'];
     
@@ -32,15 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // 新しいユーザー情報を追加
     $jsonData[] = [
-        'userName' => $useruserName,
+        'userName' => $userName,
         'password' => $password,
         'directory' => $newDir
     ];
 
+    log_write("ユーザー $userName が登録され、ディレクトリ $newDir が作成され、./main の内容がコピーされました。");
+
     // JSONファイルに書き込み
     file_put_contents($jsonFile, json_encode($jsonData, JSON_PRETTY_PRINT));
 
-    echo "ユーザー $useruserName が登録され、ディレクトリ $newDir が作成され、./main の内容がコピーされました。";
+    //echo "ユーザー $userName が登録され、ディレクトリ $newDir が作成され、./main の内容がコピーされました。";
 }
 
 // ディレクトリを再帰的にコピーする関数
@@ -78,7 +76,7 @@ function copy_dir($source, $destination) {
 ?>
 <html>
 <head>
-<title>My ToDo - Admin</title>
+<title>My ToDo - Register</title>
 <link rel="stylesheet" href="login.css" type="text/css">
 </head>
 <body>
@@ -89,15 +87,15 @@ include('header.php');
 
 <section class="main">
 <div class="container">
-<h1>My ToDo - Admin</h1>
+<h1>My ToDo - Register</h1>
 <form method="POST">
-    <label for="userName">userName</label>
+    <label for="userName">ユーザー名</label>
     <input type="text" id="userName" name="userName" required>
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required>
     <label for="directory">ディレクトリ名</label>
     <input type="text" id="directory" name="directory" required>
-    <button type="submit">ユーザー登録</button>
+    <button type="submit">登録</button>
 </form>
 </div>
 </form>

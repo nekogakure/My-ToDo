@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // パスワードが正しい場合、セッションにユーザー情報を保存
             $_SESSION['userName'] = $useruserName;  // userNameをセッションに保存
             $_SESSION['dir'] = $user['directory'];  // ユーザーのディレクトリ
+            log_write("ユーザー $useruserName がログインしました。");
             header("Location:  ". $user['directory']);  // ユーザー専用ディレクトリにリダイレクト
             exit();
         }
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register("https://mytodo.f5.siservice_worker.js").then(
+                navigator.serviceWorker.register("https://mytodo.f5.si/service_worker.js").then(
                     registration => {
                                 console.log("Service Worker registered with scope:", registration.scope);
                     },
@@ -78,7 +79,7 @@ include('header.php');
 <div class=".container">
 <h1>Login</h1>
 <form method="POST">
-    <label for="userName">userName</label>
+    <label for="userName">ユーザー名</label>
     <input type="text" id="userName" name="userName" required>
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required>
