@@ -1,3 +1,4 @@
+<?
 $inputData = file_get_contents('php://input');
 $events = json_decode($inputData, true);
 
