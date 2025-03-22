@@ -15,7 +15,7 @@ if (!isset($_SESSION['userName'])) {
 
 $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-$base_url = "https://mytodo.f5.si/seikyo/";
+$base_url = "https://mytodo.f5.si";
 
 // ベースURLを取り除いた部分を取得
 $access_dir = str_replace($base_url, "", $current_url);

@@ -61,7 +61,7 @@ self.addEventListener('notificationclick', function (event) {
 
     event.waitUntil(
         // プッシュ通知をクリックしたときにブラウザを起動して表示するURL
-        clients.openWindow('https://mytodo.f5.si/seikyo/')
+        clients.openWindow('https://mytodo.f5.si')
     );
 });
 

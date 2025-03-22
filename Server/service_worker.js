@@ -1,9 +1,9 @@
 const CACHE_NAME = "my-todo-cache-v1";
 const urlsToCache = [
-  "https://mytodo.f5.si/seikyo/",
-  "https://mytodo.f5.si/seikyo/login.css",
-  "https://mytodo.f5.si/seikyo/icon512.png",
-  "https://mytodo.f5.si/seikyo/icon192.png"
+  "https://mytodo.f5.si",
+  "https://mytodo.f5.silogin.css",
+  "https://mytodo.f5.siicon512.png",
+  "https://mytodo.f5.siicon192.png"
 ];
 
 // Install Service Worker
@@ -60,6 +60,6 @@ self.addEventListener('notificationclick', function (event) {
 
     event.waitUntil(
         // プッシュ通知をクリックしたときにブラウザを起動して表示するURL
-        clients.openWindow('https://mytodo.f5.si/seikyo/')
+        clients.openWindow('https://mytodo.f5.si')
     );
 });

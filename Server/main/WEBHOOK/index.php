@@ -14,7 +14,7 @@ function sendLine($message, $taskContent)
         'messages' => [
             [
                 'type' => 'text',
-                'text' => $message . '：' . $taskContent . '（https://mytodo.f5.si/seikyo）'
+                'text' => $message . '：' . $taskContent . '（https://mytodo.f5.si）'
             ]
         ]
     ];

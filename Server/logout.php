@@ -18,5 +18,5 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // 指定されたURLにリダイレクト
-header("Location: https://mytodo.f5.si/seikyo/index.php");
+header("Location: https://mytodo.f5.siindex.php");
 exit();

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register("https://mytodo.f5.si/seikyo/service_worker.js").then(
+                navigator.serviceWorker.register("https://mytodo.f5.siservice_worker.js").then(
                     registration => {
                                 console.log("Service Worker registered with scope:", registration.scope);
                     },
