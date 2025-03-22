@@ -84,6 +84,7 @@ include('header.php');
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required>
     <button type="submit">ログイン</button>
+    <a href="register.php">新規登録</a>
 </div>
 </section>
 </form>
