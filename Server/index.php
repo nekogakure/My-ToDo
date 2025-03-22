@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('log.php');
 
 // セッションに 'dir' が設定されているか確認
 if (isset($_SESSION['dir'])) {
