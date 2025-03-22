@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // ユーザー情報を登録
     $userName = $_POST['userName'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // パスワードをハッシュ化
-    $dirName = $_POST['directory'];
+    $dirName = uniqid();
     
     // 新しいディレクトリを作成
     $newDir = 'user_data/' . $dirName;
@@ -93,8 +93,6 @@ include('header.php');
     <input type="text" id="userName" name="userName" required>
     <label for="password">パスワード</label>
     <input type="password" id="password" name="password" required>
-    <label for="directory">ディレクトリ名</label>
-    <input type="text" id="directory" name="directory" required>
     <button type="submit">登録</button>
 </form>
 </div>
