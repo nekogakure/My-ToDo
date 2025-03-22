@@ -1,0 +1,3 @@
+<FilesMatch "\.(json|txt)$">
+    Require all denied
+</FilesMatch>

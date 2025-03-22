@@ -1,0 +1,7 @@
+<FilesMatch "\.(json|txt)$">
+    Require all denied
+</FilesMatch>
+
+<Files "manifest.json">
+    Require all granted
+</Files>

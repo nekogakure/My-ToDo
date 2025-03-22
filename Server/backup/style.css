@@ -1,0 +1,167 @@
+/* 全体のスタイル設定 */
+.all_main {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: auto;
+    padding: 0;
+}
+
+/* メインコンテナのスタイル */
+.main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* ヘッダーのスタイル */
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+/* ToDoリストのセクションスタイル */
+.main {
+    margin-bottom: 20px;
+}
+
+/* 投稿フォームのスタイル */
+form {
+    margin-bottom: 20px;
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px 10px; /* ToDoアイテム間のスペースを設定 */
+}
+
+/* ToDoアイテムのボックススタイル */
+tr {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    overflow: hidden; /* ボーダー半径の角を隠す */
+}
+
+td {
+    padding: 10px;
+    border: none; /* テーブルのボーダーを無くす */
+}
+
+.tag {
+    color:#7d7d7d;
+}
+
+span {
+    display: block;
+    padding: 10px;
+}
+
+/* 完了したタスクのスタイル */
+span[style*="text-decoration: line-through;"] {
+    color: #999;
+}
+
+/* 削除・完了ボタンのスタイル */
+input[type="submit"] {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4CAF50; /* テーマカラー */
+    color: #fff;
+}
+
+input.delete {
+    background-color: #4CAF50; /* テーマカラー */
+    color: #fff;
+}
+
+input.complete {
+    background-color: #4CAF50; /* テーマカラー */
+    color: #fff;
+}
+
+/* コメントフォームのスタイル */
+form > input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* コメントのトグルボタン */
+button {
+    background-color: #4CAF50; /* テーマカラー */
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #45a049; /* 少し暗めのテーマカラー */
+}
+
+/* コメント表示リストのスタイル */
+.todo ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo ul li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    /* background-color: #f9f9f9; */
+}
+
+/* コメント削除ボタン */
+input[type="submit"] {
+    background-color: #4CAF50; /* テーマカラー */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* 少し暗めのテーマカラー */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    form > input[type="text"] {
+        width: calc(100% - 100px);
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

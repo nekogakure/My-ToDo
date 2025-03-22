@@ -1,0 +1,7 @@
+<FilesMatch "\.(json|txt)$">
+    Require all denied
+</FilesMatch>
+AuthUserFile "/home/nekogakure/mytodo.f5.si/htpasswd/seikyo/main/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user

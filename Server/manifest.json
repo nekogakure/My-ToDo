@@ -1,0 +1,21 @@
+{
+  "name": "My ToDo",
+  "short_name": "My ToDo",
+  "description": "A simple ToDo app",
+  "start_url": "/seikyo/index.php",
+  "display": "standalone",
+  "background_color": "#F2F2F2",
+  "theme_color": "#F2F2F2",
+  "icons": [
+    {
+      "src": "icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

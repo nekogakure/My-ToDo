@@ -1,0 +1,17 @@
+[
+    {
+        "userName": "s24087",
+        "password": "$2y$10$tgVAxvyy003Al5ovfla2QuPlpQOizWeLQq2l6Ni8WK8caJBPQnW3q",
+        "directory": "user_data\/Admin"
+    },
+    {
+        "userName": "s00000",
+        "password": "$2y$10$f28nGQZxJr7C0AgfHLAj4OH6D96GlJOMAVxo.h0.bFoJTN7UdRe5e",
+        "directory": "user_data\/00000"
+    },
+    {
+        "userName": "s24123",
+        "password": "$2y$10$ByLQHFPa1RDpITKRWg83eejJGPlNGDL5xUJDH1dOLPlHmxcM.\/ZIq",
+        "directory": "user_data\/123"
+    }
+]
